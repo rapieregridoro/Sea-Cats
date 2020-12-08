@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/Fundo.bmp" type="Texture" id=1]
+[ext_resource path="res://Images/BarcoMeio.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Fase.tscn" type="PackedScene" id=3]
+
+[node name="Jogo" type="Node"]
+
+[node name="Fundo" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+stretch_mode = 5
+
+[node name="BarcoMeio" type="TextureRect" parent="."]
+margin_left = 145.0
+margin_top = 5.0
+margin_right = 965.0
+margin_bottom = 735.0
+texture = ExtResource( 2 )
+
+[node name="Fase" parent="." instance=ExtResource( 3 )]
+margin_left = 255.0
+margin_top = 136.0
+margin_right = 552.0
+margin_bottom = 407.0
+rect_scale = Vector2( 2, 2 )
+custom_constants/vseparation = 9
+custom_constants/hseparation = 11

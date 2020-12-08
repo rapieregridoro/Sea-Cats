@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Menu_Troca.wav-0591c700ff56c3f7f349106e34266736.sample"
+
+[deps]
+
+source_file="res://Audio/Menu_Troca.wav"
+dest_files=[ "res://.import/Menu_Troca.wav-0591c700ff56c3f7f349106e34266736.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
