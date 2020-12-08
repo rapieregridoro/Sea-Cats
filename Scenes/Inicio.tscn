@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Inicio.gd" type="Script" id=1]
+[ext_resource path="res://Images/Menu.bmp" type="Texture" id=2]
+[ext_resource path="res://Images/Push.png" type="Texture" id=3]
+[ext_resource path="res://Images/Logo.png" type="Texture" id=4]
+[ext_resource path="res://Images/AndarGato2.png" type="Texture" id=5]
+[ext_resource path="res://Images/AndarGato1.png" type="Texture" id=6]
+[ext_resource path="res://Images/Polvo.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 5, 14, 55, 31 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 65, 76, 59, 31 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 65, 140, 59, 31 )
+
+[node name="Inicio" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Menu de Inicio do Jogo"
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.196078, 0.392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Cor de Fundo"
+}
+
+[node name="ImgMenu" type="TextureRect" parent="."]
+margin_left = 361.0
+margin_right = 1081.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jogar" type="TextureButton" parent="."]
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 210.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 110, 62 )
+focus_neighbour_bottom = NodePath("../Multiplayer")
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Jogar"]
+position = Vector2( -24, 31 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+hframes = 13
+
+[node name="Multiplayer" type="TextureButton" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 218.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 118, 62 )
+focus_neighbour_top = NodePath("../Jogar")
+focus_neighbour_bottom = NodePath("../Sair")
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Multiplayer"]
+position = Vector2( -24, 31 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+hframes = 13
+
+[node name="Sair" type="TextureButton" parent="."]
+margin_left = 100.0
+margin_top = 570.0
+margin_right = 218.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 118, 62 )
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Sair"]
+position = Vector2( -24, 31 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+hframes = 4
+
+[node name="Logo" type="TextureRect" parent="."]
+margin_left = 650.0
+margin_top = 110.0
+margin_right = 750.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 200, 200 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 760.0
+margin_top = 370.0
+margin_right = 1031.0
+margin_bottom = 458.0
+text = "Marcelo Hiroaki Hisatome (Som)
+Rodrigo Pereira Caetano da Silva (Prog.)
+Virginia Cardoso de Toledo (Arte)"
+scroll_active = false
+[connection signal="mouse_entered" from="Jogar" to="." method="_on_Jogar_mouse_entered"]
+[connection signal="pressed" from="Jogar" to="." method="_on_Jogar_pressed"]
+[connection signal="focus_entered" from="Multiplayer" to="." method="_on_Multiplayer_focus_entered"]
+[connection signal="mouse_entered" from="Multiplayer" to="." method="_on_Multiplayer_mouse_entered"]
+[connection signal="pressed" from="Multiplayer" to="." method="_on_Multiplayer_pressed"]
+[connection signal="focus_entered" from="Sair" to="." method="_on_Sair_focus_entered"]
+[connection signal="mouse_entered" from="Sair" to="." method="_on_Sair_mouse_entered"]
+[connection signal="pressed" from="Sair" to="." method="_on_Sair_pressed"]

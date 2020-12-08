@@ -17,11 +17,11 @@ _global_script_class_icons={
 
 config/name="Sea_Cats_RE"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Images/Logo.png"
 
 [autoload]
 
-SE_Global="*res://Scripts/SE_Global.gd"
+SE_Global="*res://Scenes/Global.tscn"
 
 [display]
 
