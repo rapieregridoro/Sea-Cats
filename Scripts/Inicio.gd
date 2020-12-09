@@ -77,7 +77,8 @@ func _on_Jogar_mouse_entered():
 	SE_Global.get_node("Menu_Troca").play()
 
 func _on_Jogar_pressed():
-	pass # Replace with function body.
+	SE_Global.get_node("Menu_Select").play()
+	
 
 
 func _on_Multiplayer_focus_entered():
@@ -87,7 +88,8 @@ func _on_Multiplayer_mouse_entered():
 	SE_Global.get_node("Menu_Troca").play()
 
 func _on_Multiplayer_pressed():
-	pass # Replace with function body.
+	SE_Global.get_node("Menu_Select").play()
+	
 
 
 func _on_Sair_focus_entered():
@@ -97,6 +99,8 @@ func _on_Sair_mouse_entered():
 	SE_Global.get_node("Menu_Troca").play()
 
 func _on_Sair_pressed():
+	SE_Global.get_node("Menu_Select").play()
+	yield(get_tree().create_timer(0.3), "timeout")
 	get_tree().quit()
 
 

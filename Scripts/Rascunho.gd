@@ -368,8 +368,10 @@ void CarregarMapa() {
 	Jogador[1].x = 9*DimP;
 	Jogador[0].x = DimP;
 	
-	f[0] = Cy(1); f[1] = Cy(3);
-	f[2] = Cy(6); f[3] = Cy(8); 
+	f[0] = Cy(1); 
+	f[1] = Cy(3);
+	f[2] = Cy(6); 
+	f[3] = Cy(8); 
 	for (c = 0; c < Plv; c++) {
 		
 		Polvo[c].Status = 0;
@@ -387,6 +389,8 @@ void CarregarMapa() {
 
 	}
 	
+	
+	#começo das Fases sendo feitas
 	
 	for(c = 0; c < NFases; c++){
 		t = 0;
@@ -466,31 +470,16 @@ void CarregarMapa() {
 	}	
 }
 
-void Fundo() {
-		putimage(0, 0, IFundo, COPY_PUT);
-		
-		putimage(145,-5,BarcoMeio[1], OR_PUT);
-		putimage(145,-5,BarcoMeio[0], AND_PUT);
-		
-		putimage(900, 0, PonteDir[1], OR_PUT);
-		putimage(900, 0, PonteDir[0], AND_PUT);
-}
+void Fundo() 
+	
+	pass
+	
 
 void PrintMapa(int X, int Y, int N) {
-	int i, j, mx, my, bau;
 	
-	for(i = 0; i < TamanhoX; i++) {
-		for(j = 0; j < TamanhoY; j++) {
-			if(Onda[N].Mapa[i][j] == 1) {
-
-				mx = 10; my = 10;
-				putimage(X + mx + Cx(i), Y + my + Cy(j), Barril[1], OR_PUT);
-				putimage(X + mx + Cx(i), Y + my + Cy(j), Barril[0], AND_PUT);
-				
-			}
-		}
-	}
-}
+	
+	pass
+	
 
 void FTesouro(int ftX, int ftY) {
 	int mx, my, bau;
@@ -510,10 +499,6 @@ void FTesouro(int ftX, int ftY) {
 		Tesouro[bau].Status = 1;
 		if(Tesouro[bau].x > Cx(13) || Tesouro[bau].x < Cx(-3)) Perdeu = 1;
 	}
-	
-	
-	
-	
 }
 
 void Personagem(int psX, int psY) {
@@ -766,7 +751,8 @@ void Regra() {
 	
 	if(cMortos >= meta) {
 		L = JVitoria;
-		if(Atual >= NFases - 1) Atual = 0; else Atual++;
+		if(Atual >= NFases - 1) Atual = 0; 
+		else Atual++;
 		CarregarMapa();
 	}
 		

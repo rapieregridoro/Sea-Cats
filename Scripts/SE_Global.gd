@@ -14,7 +14,7 @@ const Largura = 1080
 const Altura = 720
 
 #Coordenada
-const TCelula = Vector2(56, 56)  #DimP no original
+const TCelula = Vector2(56, 56)  #TCelula no original
 
 #Origem do Mapa
 const XMapa = 246
@@ -46,6 +46,8 @@ const T_A = 0x41
 const T_S = 0x53
 const T_D = 0x44
 
+#Input
+var direcao : Vector2
 
 var Fim = 0
 #Condição de Fim de Jogo
@@ -70,25 +72,20 @@ var Musica = [[],[],[],[]]
 var Bt = 0
 #Botão usado nos Menus
 
+var Onda = []
+
+
 func _ready():
 	
-	print("entrou")
+	CarregarMapa()
 	
-	var Onda = []
-	Onda.resize(NFases)
+
+func _input(event):
 	
-	for contador_1 in range(Onda.size()):
-		Onda[contador_1] = []
-		Onda[contador_1].resize(TamanhoX)
-		for contador_2 in range(Onda[contador_1].size()):
-			Onda[contador_1][contador_2] = []
-			Onda[contador_1][contador_2].resize(TamanhoY)
-			
+	direcao = Direction()
 	
-	pass 
 
 func _process(delta):
-	
 	
 	pass
 	
@@ -111,6 +108,14 @@ func Cy(Y):
 	
 #converte posição no mapa em posição em pixels, para uso de coordenadas 
 #X = 0 ~ TamanhoX, Y = 0 ~ TamanhoY, fora desses valores são coordenadas fora da area esperada
+
+func Direction() -> Vector2:
+	var direction : Vector2
+	
+	direction.x = ( int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")) )
+	direction.y = ( int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")) )
+	
+	return direction
 
 func CarregarImagens():
 	
@@ -147,17 +152,94 @@ func Jogo():
 
 func CarregarMapa():
 	
-	pass
 	
-	var xm
-	var ym
-	var c
+	
 	var t
 	var f = []
 	f.resize(4)
 	
 	InimigosMortos = 0;
 	Perdeu = 0;
+	
+	
+	
+	
+	Onda.resize(NFases)
+	
+	for contador_1 in range(Onda.size()):
+		Onda[contador_1] = []
+		Onda[contador_1].resize(TamanhoX)
+		for contador_2 in range(Onda[contador_1].size()):
+			Onda[contador_1][contador_2] = []
+			Onda[contador_1][contador_2].resize(TamanhoY)
+			
+	
+	for c in range(Onda.size()):
+		t = 0
+		for xm in range(Onda[c].size()):
+			for ym in range(Onda[c][xm].size()):
+				
+				Onda[c][xm][ym] = 0
+				
+				if xm == 0 || xm == TamanhoX - 1 || ym == 0 || ym == TamanhoY - 1:
+					Onda[c][xm][ym] = 1
+					
+				
+				#Mapa 1
+				if (c == 0):
+					if( (xm == 4 or xm == 7) and ym == 1 or
+						xm == 5 and ym == 5 or
+						xm == 5 and ym == 5 or
+						xm == 1 and ym == 6 or
+						xm == 3 and ym == 7 or
+						xm == 9 and ym == 8 ) :
+							
+							Onda[c][xm][ym] = 1
+						
+					
+				
+				#Mapa 2
+				if (c == 1):
+					if( xm == 4 and ym == 2 or
+						xm == 1 and ym == 5 or
+						xm == 5 and (ym == 4 or ym == 5) or
+						xm == 6 and ym == 7 or
+						xm == 9 and ym == 4 ):
+							
+							Onda[c][xm][ym] = 1
+					
+				
+				#Mapa 3
+				if (c == 2):
+					
+					if( xm == 2 and ym == 4 or
+						xm == 3 and(ym == 6 or ym == 8) or
+						xm == 4 and ym == 1 or
+						xm == 6 and ym == 8 or
+						xm == 7 and(ym == 1 or ym == 3) or
+						xm == 8 and ym == 6 or
+						xm == 9 and ym == 4 ):
+							
+							Onda[c][xm][ym] = 1;
+						
+					
+				
+				#Mapa 4
+				if (c == 3):
+					
+					if( (xm == 6 or xm ==4) and ym == 1 or
+						xm == 2 and ym == 2 or
+						xm == 9 and ym == 3 or
+						xm == 8 and ym == 5 or
+						xm == 1 and ym == 6 or
+						(xm == 3 or xm == 7) and ym == 7 ):
+							
+							Onda[c][xm][ym] = 1;
+						
+					
+				
+			
+		
 	
 #Usado para carregar a posição dos barris
 #Usado para carregar posição inicial dos Baus
@@ -167,7 +249,7 @@ func Fundo():
 	
 	pass
 	
-#Printa o fundo da Fase de Jogo
+#Printa o fundo da Fase de Jogo, não é nessessário
 
 func PrintMapa(X, Y, N):
 	
@@ -183,6 +265,7 @@ func FTesouro( X, Y):
 	pass
 	
 #Controla os Baus no Mapa
+
 
 func Personagem( psX,  pxY):
 	
@@ -212,7 +295,7 @@ func BDJogo():
 	
 	pass
 	
-#Gerenciamento do banco de dados
+#Gerenciamento do banco de dados, Score do Jogo
 
 
 
