@@ -4,8 +4,8 @@ extends TileMap
 
 
 func _ready():
-	cell_size = SE_Global.TCelula
-	PrintMapa(3)
+	
+	PrintMapa(SE_Global.Atual)
 	
 
 

@@ -14,7 +14,7 @@ const Largura = 1080
 const Altura = 720
 
 #Coordenada
-const TCelula = Vector2(56, 56)  #TCelula no original
+const TCelula : Vector2 = Vector2(56, 56)  #TCelula no original
 
 #Origem do Mapa
 const XMapa = 246

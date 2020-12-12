@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Images/Fundo.bmp" type="Texture" id=1]
 [ext_resource path="res://Images/BarcoMeio.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Fase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/PonteDir.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Jogador.tscn" type="PackedScene" id=5]
 
 [node name="Jogo" type="Node"]
 
@@ -39,6 +40,7 @@ __meta__ = {
 
 [node name="Fase" parent="." instance=ExtResource( 3 )]
 position = Vector2( 246, 123 )
+scale = Vector2( 2, 2 )
 cell_y_sort = true
 
 [node name="Inimigos" type="Node2D" parent="."]
@@ -46,3 +48,8 @@ cell_y_sort = true
 [node name="Cofres" type="Node2D" parent="."]
 
 [node name="Jogadores" type="Node2D" parent="."]
+position = Vector2( 246, 123 )
+
+[node name="Jogador" parent="Jogadores" instance=ExtResource( 5 )]
+position = Vector2( 56, 56 )
+scale = Vector2( 2, 2 )
