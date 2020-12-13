@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export(int, 1, 2) var Jogador = 2
+export(int, 1, 2) var Jogador = 1
 var dirbuffer := Vector2(0,0)
 var indopara := Vector2(0,0)
 var arena = []
@@ -8,8 +8,12 @@ var arena = []
 func _ready():
 	
 	$Gato_1.visible = false
-	$Gato_1.visible = false
+	$Gato_2.visible = false
+	
 	arena = SE_Global.Onda[SE_Global.Atual]
+	
+	pos_buffer = position
+	pos_alvo = position
 	
 
 func _physics_process(delta):
@@ -25,22 +29,23 @@ func moviment(delta):
 	if SE_Global.direcao.x * SE_Global.direcao.y == 0:
 		dirbuffer = SE_Global.direcao
 	
-	#se parado recebe intenção
-	if indopara == Vector2(0,0):
+	if (position - pos_alvo).length_squared() < 5:
+		position = pos_alvo
+		pos_buffer = position
+		pos_alvo = pos_buffer + dirbuffer * 56
 		indopara = dirbuffer
-	#se não, continua andando
-	else:
-		position = position.move_toward(position + indopara,728*delta)
-		#position += indopara*200*delta
 	
-	if indopara == Vector2(0,1) and position.y > 200:
-		indopara = Vector2(0,0)
-		
 	
-	print(position, position.snapped(Vector2(28,28)))
+	print((position - pos_alvo).length_squared())
+	move_and_slide((pos_alvo - pos_buffer) * 5)
+	#position = position + (pos_alvo - pos_buffer)*delta
+	
+	print(dirbuffer)
+	
+	pass
 
-
-
+var pos_buffer : Vector2
+var pos_alvo : Vector2
 
 func animation():
 	

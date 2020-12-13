@@ -52,4 +52,4 @@ position = Vector2( 246, 123 )
 
 [node name="Jogador" parent="Jogadores" instance=ExtResource( 5 )]
 position = Vector2( 56, 56 )
-scale = Vector2( 2, 2 )
+Jogador = 2
